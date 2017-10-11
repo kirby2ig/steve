@@ -6,8 +6,23 @@
 
 game::game()
 {
-	nodelay(stdscr,1);
 	this->running = true;
+	initscr();
+	if(noecho() == ERR)
+	{
+		std::cout << "fatal: Couldn't set noecho mode." << std::endl;
+		this->running = false;
+	}
+	if(cbreak() == ERR)
+	{
+		std::cout << "fatal: Couldn't set cbreak mode." << std::endl;
+		this->running = false;
+	}
+	if(nodelay(stdscr, 1) == ERR)
+	{
+		std::cout << "fatal: Cooldn't set nodelay mode." << std::endl;
+		this->running = false;
+	}
 }
 
 game::~game()
@@ -36,9 +51,9 @@ void game::render()
 
 void game::handleInput()
 {
-	int x = getch();
-	if(x != ERR)
+	char x = getch();
+	if(x == ' ')
 	{
-		std::cout << x << std::endl;
+		printf("jump\n");
 	}
 }

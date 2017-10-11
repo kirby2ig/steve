@@ -3,31 +3,23 @@
 #include <iostream>
 #include <curses.h>
 
+#define WIDTH 50
+#define HEIGHT 10
 
-game::game()
+
+game::game() : window(WIDTH, HEIGHT)
 {
-	this->running = true;
-	initscr();
-	if(noecho() == ERR)
-	{
-		std::cout << "fatal: Couldn't set noecho mode." << std::endl;
-		this->running = false;
-	}
-	if(cbreak() == ERR)
-	{
-		std::cout << "fatal: Couldn't set cbreak mode." << std::endl;
-		this->running = false;
-	}
-	if(nodelay(stdscr, 1) == ERR)
-	{
-		std::cout << "fatal: Cooldn't set nodelay mode." << std::endl;
-		this->running = false;
-	}
+	running = true;
 }
 
 game::~game()
 {
 
+}
+
+int game::init()
+{
+	return window.init();
 }
 
 void game::run()
@@ -51,9 +43,9 @@ void game::render()
 
 void game::handleInput()
 {
-	char x = getch();
-	if(x == ' ')
+	char character = window.getTypedCharacter();
+	if(character == ' ')
 	{
-		printf("jump\n");
+		std::cout << "Jump" << std::endl;
 	}
 }

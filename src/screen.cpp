@@ -1,6 +1,7 @@
 #include "screen.h"
 
-#include<iostream>
+#include <iostream>
+#include <curses.h>
 
 screen::screen(int width, int height)
 {
@@ -17,6 +18,35 @@ screen::screen(int width, int height)
 screen::~screen()
 {
 	delete[] grid;
+}
+
+int screen::init()
+{
+	initscr();
+	int echoErr = noecho();
+	int cbreakErr = cbreak();
+	int nodelayErr = nodelay(stdscr, 1);
+	if(echoErr == ERR)
+	{
+		std::cout << "fatal: Could not set noecho" << std::endl;
+		return echoErr;
+	}
+	if(cbreakErr == ERR)
+	{
+		std::cout << "fatal: Could not set cbreak" << std::endl;
+		return cbreakErr;
+	}
+	if(nodelayErr == ERR)
+	{
+		std::cout << "fatal: Could not set nodelay" << std::endl;
+		return nodelayErr;
+	}
+	return 1;
+}
+
+int screen::getTypedCharacter()
+{
+	return getch();
 }
 
 void screen::setCharacterAt(int x, int y, char character)

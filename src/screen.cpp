@@ -69,9 +69,9 @@ void screen::draw()
 			move(y, x);
 			curs_set(0);
 			printw("%c", character);
-			refresh();
 		}
 	}
+	refresh();
 }
 
 void screen::clear(char space)

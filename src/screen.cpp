@@ -17,6 +17,10 @@ screen::screen(int width, int height)
 
 screen::~screen()
 {
+	for(int i = 0; i < width; i++)
+	{
+		delete[] grid[i];
+	}
 	delete[] grid;
 }
 

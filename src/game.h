@@ -16,6 +16,9 @@ class game
 		void update();
 		void render();
 		void handleInput();
+		int score;
+		int x; 
+		int y;
 
 }
 ;

@@ -2,10 +2,13 @@
 
 #include <iostream>
 #include <curses.h>
+#include <unistd.h>
 
-#define WIDTH 50
-#define HEIGHT 10
+#define WIDTH 80
+#define HEIGHT 15
 
+#define FPS 60
+#define FRAMETIME 1000000 / FPS
 
 game::game() : window(WIDTH, HEIGHT)
 {
@@ -28,17 +31,31 @@ void game::run()
 	{
 		update();
 		render();
+		usleep(FRAMETIME);
 	}
 }
 
 void game::update()
 {
 	handleInput();
+	if(x >= WIDTH)
+	{
+		y++;
+		x = 0;
+	}
+	if(y >= HEIGHT)
+	{
+		y = 0;
+		x = 0;
+	}
+	window.clear('-');
+	window.setCharacterAt(x, y, '0');
+	x++;
 }
 
 void game::render()
 {
-
+	window.draw();
 }
 
 void game::handleInput()
@@ -46,6 +63,6 @@ void game::handleInput()
 	char character = window.getTypedCharacter();
 	if(character == ' ')
 	{
-		std::cout << "Jump" << std::endl;
+		//TODO handle jumps
 	}
 }

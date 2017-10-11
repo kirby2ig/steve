@@ -61,15 +61,16 @@ char screen::getCharacterAt(int x, int y)
 
 void screen::draw()
 {
-	std::cout << "\033[2J\033[1;1H";
 	for(int y = 0; y < height; y++)
 	{
 		for(int x = 0; x < width; x++)
 		{
 			char character = getCharacterAt(x, y);
-			std::cout << character;
+			move(y, x);
+			curs_set(0);
+			printw("%c", character);
+			refresh();
 		}
-		std::cout << std::endl;
 	}
 }
 

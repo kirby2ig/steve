@@ -65,4 +65,8 @@ void game::handleInput()
 	{
 		//TODO handle jumps
 	}
+	if(character == (char) 27 || character == 'q')
+	{
+		running = false;
+	}
 }

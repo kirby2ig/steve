@@ -22,6 +22,7 @@ screen::~screen()
 		delete[] grid[i];
 	}
 	delete[] grid;
+	endwin();
 }
 
 int screen::init()

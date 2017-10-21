@@ -1,4 +1,3 @@
-#TODO create makefile
 CC=g++
 LINK=-lncurses
 steve: main.o game.o entity.o screen.o

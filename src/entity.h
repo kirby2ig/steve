@@ -8,7 +8,7 @@ class entity
 	public:
 		entity(int x, int y);
 		~entity(); 
-		virtual void render(screen window);
+		virtual void render(screen window) = 0;
 		int getX();
 		int getY();
 		void setX(int x);

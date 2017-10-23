@@ -3,6 +3,11 @@
 
 #include "screen.h"
 
+typedef enum gameState
+{
+	MENU, GAME, DEATH
+} gameState;
+
 class game
 {
 	public:
@@ -10,6 +15,8 @@ class game
 		~game();
 		int init();
 		void run();
+		gameState getGameState();
+		void setGameState(gameState nextState);
 	private:
 		screen window;
 		bool running;
@@ -19,7 +26,7 @@ class game
 		int score;
 		int x; 
 		int y;
-
+		gameState state;
 }
 ;
 

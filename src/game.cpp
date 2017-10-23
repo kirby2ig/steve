@@ -13,6 +13,7 @@
 game::game() : window(WIDTH, HEIGHT)
 {
 	running = true;
+	state = MENU;
 }
 
 game::~game()
@@ -69,4 +70,14 @@ void game::handleInput()
 	{
 		running = false;
 	}
+}
+
+gameState game::getGameState()
+{
+	return state;	
+}
+
+void game::setGameState(gameState nextState)
+{
+	state = nextState;
 }

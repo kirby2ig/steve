@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "screen.h"
+#include "player.h"
 
 typedef enum gameState
 {
@@ -24,9 +25,12 @@ class game
 		void render();
 		void handleInput();
 		void drawTitle();
+		void drawFloor();
+		void drawGame();
 		int score;
 		int x; 
 		int y;
+		player theplayer;
 		gameState state;
 }
 ;

@@ -1,16 +1,18 @@
 #include "game.h"
 
 #include <iostream>
-#include <curses.h>
 #include <unistd.h>
 
 #define WIDTH 80
 #define HEIGHT 15
+#define FLOOR 11
 
 #define FPS 60
 #define FRAMETIME 1000000 / FPS
 
-game::game() : window(WIDTH, HEIGHT)
+game::game() :
+window(WIDTH, HEIGHT),
+theplayer(3, FLOOR - 1)
 {
 	running = true;
 	state = MENU;
@@ -157,37 +159,44 @@ void game::drawTitle()
 	window.setCharacterAt(45, 78, 't');
 }
 
+void game::drawFloor()
+{
+	for(int y = HEIGHT - 1; y >= FLOOR + 1; y--)
+	{
+		for(int x = 0; x < WIDTH; x++)
+		{
+			window.setCharacterAt(x, y, '8');
+		}
+	}
+	for(int x = 0; x < WIDTH; x++)
+	{
+		window.setCharacterAt(x, FLOOR, 'T');
+	}
+}
+
+void game::drawGame()
+{
+	window.clear(' ');
+	drawFloor();
+	theplayer.render(&window);
+}
+
 void game::update()
 {
 	handleInput();
-	switch(state)
-	{
-		case GAME:
-			if(x >= WIDTH)
-			{
-				y++;
-				x = 0;
-			}
-			if(y >= HEIGHT)
-			{
-				y = 0;
-				x = 0;
-			}
-			window.clear('-');
-			window.setCharacterAt(x, y, '0');
-			x++;
-			break;
-		case MENU:
-			drawTitle();
-			break;
-		case DEATH:
-			
-			break;
-	}
 }
 
 void game::render()
 {
+	switch(state)
+	{
+		case MENU:
+			drawTitle();
+			break;
+		case GAME:
+			drawGame();
+			break;
+	}
 	window.draw();
 }
 

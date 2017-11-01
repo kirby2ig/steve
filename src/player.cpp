@@ -1,5 +1,16 @@
 #include "player.h"
 
+player::player(int x, int y): 
+entity(x, y)
+{
+
+}
+
+player::~player()
+{
+
+}
+
 int player::getHealth()
 {
 	return health;
@@ -25,4 +36,9 @@ bool player::isAlive()
 void player::setScore(int amount)
 {
 	score = amount;
+}
+
+void player::render(screen *window)
+{
+	window->setCharacterAt(x, y, 'O');
 }

@@ -132,6 +132,48 @@ void game::update()
 			window.setCharacterAt(54, 4, 'E');
 			window.setCharacterAt(55, 4, 'E');
 			window.setCharacterAt(56, 4, 'E');
+			//Press spacebar to start
+			//Press
+			window.setCharacterAt(27, 77, 'P');
+			window.setCharacterAt(28, 77, 'r');
+			window.setCharacterAt(29, 77, 'e');
+			window.setCharacterAt(30, 77, 's');
+			window.setCharacterAt(31, 77, 's');
+			//spacebar
+			window.setCharacterAt(33, 77, 's');
+			window.setCharacterAt(34, 77, 'p');
+			window.setCharacterAt(35, 77, 'a');
+			window.setCharacterAt(36, 77, 'c');
+			window.setCharacterAt(37, 77, 'e');
+			window.setCharacterAt(38, 77, 'b');
+			window.setCharacterAt(39, 77, 'a');
+			window.setCharacterAt(40, 77, 'r');
+			//to
+			window.setCharacterAt(42, 77, 't');
+			window.setCharacterAt(43, 77, 'o');
+			//start
+			window.setCharacterAt(45, 77, 's');
+			window.setCharacterAt(46, 77, 't');
+			window.setCharacterAt(47, 77, 'a');
+			window.setCharacterAt(48, 77, 'r');
+			window.setCharacterAt(49, 77, 't');
+			//Press q to quit
+			//Press
+			window.setCharacterAt(31, 78, 'P');
+			window.setCharacterAt(32, 78, 'r');
+			window.setCharacterAt(33, 78, 'e');
+			window.setCharacterAt(34, 78, 's');
+			window.setCharacterAt(35, 78, 's');
+			//q
+			window.setCharacterAt(37, 78, 'Q');
+			//to
+			window.setCharacterAt(39, 78, 't');
+			window.setCharacterAt(40, 78, 'o');
+			//quit
+			window.setCharacterAt(42, 78, 'q');
+			window.setCharacterAt(43, 78, 'u');
+			window.setCharacterAt(44, 78, 'i');
+			window.setCharacterAt(45, 78, 't');
 			break;
 		case DEATH:
 			
@@ -147,10 +189,20 @@ void game::render()
 void game::handleInput()
 {
 	char character = window.getTypedCharacter();
-	if(character == ' ')
+	if(state == GAME)
 	{
-		//TODO handle jumps
+		if(character == ' ')
+		{
+			//TODO handle jumps
+		}
 	}
+
+	if(state == MENU)
+	{
+		if(character == ' ')
+			state = GAME;
+	}
+
 	if(character == (char) 27 || character == 'q')
 	{
 		running = false;

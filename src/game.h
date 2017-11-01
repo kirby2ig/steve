@@ -23,6 +23,7 @@ class game
 		void update();
 		void render();
 		void handleInput();
+		void drawTitle();
 		int score;
 		int x; 
 		int y;

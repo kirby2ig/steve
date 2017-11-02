@@ -3,6 +3,7 @@
 
 #include "screen.h"
 #include "entity.h"
+#include "vec2f.h"
 
 class player: public entity
 {
@@ -17,10 +18,12 @@ class player: public entity
 		bool isAlive();
 		void render(screen *window);
 		void jump();
+		void update();
 	private:
 		int health;
 		int score;
 		bool jumping;
+		vec2f velocity;
 };
 
 #endif

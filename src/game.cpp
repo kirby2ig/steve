@@ -3,13 +3,6 @@
 #include <iostream>
 #include <unistd.h>
 
-#define WIDTH 80
-#define HEIGHT 15
-#define FLOOR 11
-
-#define FPS 60
-#define FRAMETIME 1000000 / FPS
-
 game::game() :
 window(WIDTH, HEIGHT),
 theplayer(3, FLOOR - 1)
@@ -184,6 +177,10 @@ void game::drawGame()
 void game::update()
 {
 	handleInput();
+	if(state == GAME)
+	{
+		theplayer.update();
+	}
 }
 
 void game::render()

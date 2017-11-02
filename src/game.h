@@ -8,6 +8,8 @@
 #define HEIGHT 15
 #define FLOOR 11
 
+#define LITTLE_G -0.06
+
 #define FPS 60
 #define FRAMETIME 1000000 / FPS
 

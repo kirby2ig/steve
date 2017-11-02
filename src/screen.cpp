@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <curses.h>
+#include <stdio.h>
 
 screen::screen(int width, int height)
 {
@@ -13,6 +14,8 @@ screen::screen(int width, int height)
 		this->grid[i] = new char[height];
 	}
 	clear(' ');
+	debug = NULL;
+	debuglength = 0;
 }
 
 screen::~screen()
@@ -22,6 +25,7 @@ screen::~screen()
 		delete[] grid[i];
 	}
 	delete[] grid;
+	delete[] debug;
 	endwin();
 }
 
@@ -76,6 +80,14 @@ void screen::draw()
 			printw("%c", character);
 		}
 	}
+	for(int x = 0; x < debuglength; x++)
+	{
+		int y = height - 1;
+		char character = *(debug + x);
+		move(y, x);
+		curs_set(0);
+		printw("%c", character);
+	}
 	refresh();
 }
 
@@ -88,4 +100,11 @@ void screen::clear(char space)
 			setCharacterAt(x, y, space);
 		}
 	}
+}
+
+void screen::print(char* string, int length)
+{
+	delete[] debug;
+	debug = string;
+	debuglength = length;
 }

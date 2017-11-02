@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-#define JUMP_VELOC 1
+#define JUMP_VELOC .8
 
 player::player(int x, int y): 
 entity(x, y)

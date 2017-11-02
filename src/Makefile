@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=
-LINK=-lncursesw
+LINK=-lncurses
 steve: main.o game.o player.o entity.o screen.o
 	$(CC) $(CFLAGS) -o steve main.o game.o player.o entity.o screen.o $(LINK)
 main.o: main.cpp game.h screen.h

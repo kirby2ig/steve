@@ -217,7 +217,7 @@ void game::handleInput()
 			state = GAME;
 	}
 
-	if(character == (char) 27 || character == 'q')
+	if(character == 'q')
 	{
 		running = false;
 	}

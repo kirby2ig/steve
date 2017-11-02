@@ -16,9 +16,11 @@ class player: public entity
 		void damage(int amount);
 		bool isAlive();
 		void render(screen *window);
+		void jump();
 	private:
 		int health;
 		int score;
+		bool jumping;
 };
 
 #endif

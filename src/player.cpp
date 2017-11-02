@@ -1,9 +1,10 @@
 #include "player.h"
+#include "game.h"
 
 player::player(int x, int y): 
 entity(x, y)
 {
-
+	jumping = false;
 }
 
 player::~player()
@@ -41,4 +42,16 @@ void player::setScore(int amount)
 void player::render(screen *window)
 {
 	window->setCharacterAt(x, y, 'O');
+}
+
+void player::jump()
+{
+	if(!jumping)
+	{
+		y--;
+		if(y < 0)
+		{
+			y = 0;
+		}
+	}
 }

@@ -4,6 +4,13 @@
 #include "screen.h"
 #include "player.h"
 
+#define WIDTH 80
+#define HEIGHT 15
+#define FLOOR 11
+
+#define FPS 60
+#define FRAMETIME 1000000 / FPS
+
 typedef enum gameState
 {
 	MENU, GAME, DEATH

@@ -207,7 +207,7 @@ void game::handleInput()
 	{
 		if(character == ' ')
 		{
-			//TODO handle jumps
+			theplayer.jump();
 		}
 	}
 

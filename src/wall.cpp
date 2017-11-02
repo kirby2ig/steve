@@ -16,7 +16,7 @@ void wall::render(screen *window)
 {
 	if(exists)
 	{
-		//Render wall
+		//TODO render walls
 	}
 }
 

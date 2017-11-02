@@ -9,6 +9,7 @@ class entity
 		entity(int x, int y);
 		~entity(); 
 		virtual void render(screen *window) = 0;
+		virtual void update() = 0;
 		int getX();
 		int getY();
 		void setX(int x);

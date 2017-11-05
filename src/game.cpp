@@ -64,6 +64,7 @@ void game::drawScore()
 		int x = WIDTH - digits + i;
 		window.setCharacterAt(x, 0, character);
 	}
+	delete[] text;
 }
 
 void game::drawTitle()

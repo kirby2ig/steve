@@ -57,6 +57,14 @@ void player::checkCollision(wall* w)
 			alive = false;
 		}
 	}
+	else if(w->getX() < x)
+	{
+		if(!w->hasScored())
+		{
+			score++;
+			w->setScored(true);
+		}	
+	}
 }
 
 void player::update()

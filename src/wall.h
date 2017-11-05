@@ -16,10 +16,13 @@ public entity
 		void move();
 		bool stillExists();
 		int getHeight();
+		bool hasScored();
+		void setScored(bool scored);
 	private:
 		int ticks;
 		bool exists;
 		int height;
+		bool scored;
 };
 
 #endif

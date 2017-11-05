@@ -121,6 +121,21 @@ void game::drawTitle()
 	window.setCharacterAt(54, 4, 'E');
 	window.setCharacterAt(55, 4, 'E');
 	window.setCharacterAt(56, 4, 'E');
+	//The jumping O
+	//The
+	window.setCharacterAt(33, 6, 'T');
+	window.setCharacterAt(34, 6, 'h');
+	window.setCharacterAt(35, 6, 'e');
+	//jumping
+	window.setCharacterAt(37, 6, 'j');
+	window.setCharacterAt(38, 6, 'u');
+	window.setCharacterAt(39, 6, 'm');
+	window.setCharacterAt(40, 6, 'p');
+	window.setCharacterAt(41, 6, 'i');
+	window.setCharacterAt(42, 6, 'n');
+	window.setCharacterAt(43, 6, 'g');
+	//O
+	window.setCharacterAt(45, 6, 'O');
 	//Press spacebar to start
 	//Press
 	window.setCharacterAt(27, 77, 'P');
@@ -184,7 +199,6 @@ void game::drawGame()
 {
 	window.clear(' ');
 	drawFloor();
-	thePlayer.render(&window);
 	for(int i = 0; i < MAX_WALLS; i++)
 	{
 		wall* w = walls[i];
@@ -193,6 +207,7 @@ void game::drawGame()
 			w->render(&window);
 		}
 	}
+	thePlayer.render(&window);
 }
 
 void game::updateEntities()

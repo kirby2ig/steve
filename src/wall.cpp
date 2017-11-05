@@ -6,6 +6,7 @@ entity(WALL_SPAWN, FLOOR - 1)
 {
 	this->height = height;
 	exists = true;
+	scored = false;
 }
 
 wall::~wall()
@@ -27,6 +28,16 @@ void wall::render(screen *window)
 void wall::update()
 {
 	
+}
+
+bool wall::hasScored()
+{
+	return scored;
+}
+
+void wall::setScored(bool scored)
+{
+	this->scored = scored;
 }
 
 int wall::getHeight()

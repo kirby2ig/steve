@@ -237,6 +237,20 @@ void game::updateEntities()
 				break;
 			}
 		}
+	}
+	//Check collisions
+	for(int i = 0; i < MAX_WALLS; i++)
+	{
+		wall* w = walls[i];
+		if(w != NULL)
+		{
+			thePlayer.checkCollision(w);
+		}
+	}
+	//Check death
+	if(!thePlayer.isAlive())
+	{
+		state = DEATH;
 	}	
 }
 
@@ -258,6 +272,9 @@ void game::render()
 			drawTitle();
 			break;
 		case GAME:
+			drawGame();
+			break;
+		case DEATH:
 			drawGame();
 			break;
 	}

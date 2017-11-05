@@ -12,6 +12,7 @@ entity(x, y)
 	jumping = false;
 	velocity.x = 0;
 	velocity.y = 0;
+	alive = true;
 }
 
 player::~player()
@@ -19,26 +20,14 @@ player::~player()
 
 }
 
-int player::getHealth()
-{
-	return health;
-}
-
 int player::getScore()
 {
 	return score;
 }
 
-void player::damage(int amount)
-{
-	health -= amount;
-	if(health < 0)
-		health = 0;
-}
-
 bool player::isAlive()
 {
-	return health > 0;
+	return alive;
 }
 
 void player::setScore(int amount)
@@ -59,6 +48,17 @@ void player::jump()
 	{
 		jumping = true;
 		velocity.y = JUMP_VELOC;
+	}
+}
+
+void player::checkCollision(wall* w)
+{
+	if(w->getX() == x)
+	{
+		if(w->getY() - w->getHeight() <= y)
+		{
+			alive = false;
+		}
 	}
 }
 

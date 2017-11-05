@@ -7,7 +7,7 @@ main.o: main.cpp game.h screen.h
 	$(CC) $(CFLAGS) -c main.cpp 
 game.o: game.cpp game.h screen.h player.h entity.h wall.h
 	$(CC) $(CFLAGS) -c game.cpp 
-player.o: player.cpp player.h entity.h screen.h game.h
+player.o: player.cpp player.h entity.h screen.h game.h wall.h
 	$(CC) $(CFLAGS) -c player.cpp
 wall.o: wall.cpp wall.h entity.h screen.h game.h
 	$(CC) $(CFLAGS) -c wall.cpp

@@ -29,6 +29,11 @@ void wall::update()
 	
 }
 
+int wall::getHeight()
+{
+	return height;
+}
+
 void wall::move()
 {
 	x--;

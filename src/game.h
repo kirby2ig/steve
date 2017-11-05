@@ -5,14 +5,21 @@
 #include "player.h"
 #include "wall.h"
 
+//Window
 #define WIDTH 80
 #define HEIGHT 15
 #define FLOOR 11
 
-#define LITTLE_G -.07
+//Gravity
+#define LITTLE_G -.075
 
+//FPS
 #define FPS 60
 #define FRAMETIME 1000000 / FPS
+
+//Walls
+#define MAX_WALLS 5
+#define WALL_SPAWN 79
 
 typedef enum gameState
 {
@@ -37,12 +44,14 @@ class game
 		void drawTitle();
 		void drawFloor();
 		void drawGame();
+		void updateEntities();
 		int score;
 		int x; 
 		int y;
-		player theplayer;
-		wall testWall;
+		long ticks;
+		player thePlayer;
 		gameState state;
+		wall** walls;
 }
 ;
 

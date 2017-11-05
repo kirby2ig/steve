@@ -2,19 +2,31 @@
 
 #include <iostream>
 #include <unistd.h>
+#include <math.h>
 
 game::game() :
 window(WIDTH, HEIGHT),
-theplayer(3, FLOOR - 1),
-testWall(79, MAX_WALL_HEIGHT)
+thePlayer(3, FLOOR - 1)
 {
 	running = true;
 	state = MENU;
+	walls = new wall*[MAX_WALLS];
+	for(int i = 0; i < MAX_WALLS; i ++)
+	{
+		walls[i] = NULL;
+	}
 }
 
 game::~game()
 {
-
+	for(int i = 0; i < MAX_WALLS; i++)
+	{
+		if(walls[i] != NULL)
+		{
+			delete walls[i];
+		}
+	}
+	delete[] walls;
 }
 
 int game::init()
@@ -172,8 +184,60 @@ void game::drawGame()
 {
 	window.clear(' ');
 	drawFloor();
-	theplayer.render(&window);
-	testWall.render(&window);
+	thePlayer.render(&window);
+	for(int i = 0; i < MAX_WALLS; i++)
+	{
+		wall* w = walls[i];
+		if(w != NULL)
+		{
+			w->render(&window);
+		}
+	}
+}
+
+void game::updateEntities()
+{
+	thePlayer.update();
+	//Move walls every 2 ticks
+	if(ticks % 2 == 0)
+	{
+		//Move walls
+		for(int i = 0; i < MAX_WALLS; i++)
+		{
+			wall* w = walls[i];
+			if(w != NULL)
+			{
+				w->move();
+			}
+		}
+		//Remove dead walls
+		for(int i = 0; i < MAX_WALLS; i++)
+		{
+			wall* w = walls[i];
+			if(w != NULL)
+			{
+				if(!w->stillExists())
+				{
+					delete w;
+					walls[i] = NULL;
+				}
+			}
+		}
+	}
+	//Add new walls
+	if(ticks % 60 == 0)
+	{
+		for(int i = 0; i < MAX_WALLS; i++)
+		{
+			wall* w = walls[i];
+			if(w == NULL)
+			{
+				int height = rand() % MAX_WALL_HEIGHT + 1;
+			  	walls[i] = new wall(height);
+				break;
+			}
+		}
+	}	
 }
 
 void game::update()
@@ -181,8 +245,8 @@ void game::update()
 	handleInput();
 	if(state == GAME)
 	{
-		theplayer.update();
-		testWall.update();
+		updateEntities();
+		ticks++;
 	}
 }
 
@@ -207,7 +271,8 @@ void game::handleInput()
 	{
 		if(character == ' ')
 		{
-			theplayer.jump();
+
+			thePlayer.jump();
 		}
 	}
 

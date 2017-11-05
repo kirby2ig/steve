@@ -5,18 +5,19 @@
 
 #define MAX_WALL_HEIGHT 4
 
-class wall : public entity
+class wall :
+public entity
 {
 	public:
-		wall(int x, int height);
+		wall(int height);
 		~wall();
 		void render(screen *window);
 		void update();
+		void move();
 		bool stillExists();
 		int getHeight();
 	private:
 		int ticks;
-		void move();
 		bool exists;
 		int height;
 };

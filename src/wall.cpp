@@ -1,10 +1,11 @@
 #include "wall.h"
 #include "game.h"
 
-wall::wall(int x, int height):
-entity(x, FLOOR - 1)
+wall::wall(int height):
+entity(WALL_SPAWN, FLOOR - 1)
 {
 	this->height = height;
+	exists = true;
 }
 
 wall::~wall()
@@ -25,9 +26,7 @@ void wall::render(screen *window)
 
 void wall::update()
 {
-	ticks++;
-	if(ticks % 2 == 0)
-		move();
+	
 }
 
 void wall::move()

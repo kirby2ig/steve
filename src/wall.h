@@ -3,10 +3,12 @@
 
 #include "entity.h"
 
+#define MAX_WALL_HEIGHT 4
+
 class wall : public entity
 {
 	public:
-		wall(int x, int y);
+		wall(int x, int height);
 		~wall();
 		void render(screen *window);
 		void update();
@@ -14,7 +16,7 @@ class wall : public entity
 		int getHeight();
 	private:
 		int ticks;
-		void move;
+		void move();
 		bool exists;
 		int height;
 };

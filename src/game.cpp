@@ -5,7 +5,8 @@
 
 game::game() :
 window(WIDTH, HEIGHT),
-theplayer(3, FLOOR - 1)
+theplayer(3, FLOOR - 1),
+testWall(79, MAX_WALL_HEIGHT)
 {
 	running = true;
 	state = MENU;
@@ -172,6 +173,7 @@ void game::drawGame()
 	window.clear(' ');
 	drawFloor();
 	theplayer.render(&window);
+	testWall.render(&window);
 }
 
 void game::update()
@@ -180,6 +182,7 @@ void game::update()
 	if(state == GAME)
 	{
 		theplayer.update();
+		testWall.update();
 	}
 }
 

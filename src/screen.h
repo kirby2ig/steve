@@ -17,8 +17,6 @@ class screen
         char** grid;
         int width;
         int height;
-        char* debug;
-        int debuglength;
 }
 ;
 

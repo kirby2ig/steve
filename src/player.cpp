@@ -36,10 +36,7 @@ void player::setScore(int amount)
 }
 void player::render(screen *window)
 {
-	char* buffer = new char(20);
-	int n = snprintf(buffer, 20, "Velocity: %f", velocity.y);
 	window->setCharacterAt(x, y, 'O');
-	window->print(buffer, n);
 }
 
 void player::jump()

@@ -2,8 +2,6 @@
 #include "game.h"
 #include <math.h>
 
-#include <stdio.h>
-
 #define JUMP_VELOC 1
 
 player::player(int x, int y): 
@@ -12,6 +10,7 @@ entity(x, y)
 	jumping = false;
 	velocity.x = 0;
 	velocity.y = 0;
+	score = 0;
 	alive = true;
 }
 

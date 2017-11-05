@@ -3,6 +3,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <math.h>
+#include <stdio.h>
 
 game::game() :
 window(WIDTH, HEIGHT),
@@ -41,6 +42,27 @@ void game::run()
 		update();
 		render();
 		usleep(FRAMETIME);
+	}
+}
+
+void game::drawScore()
+{
+	int score = thePlayer.getScore();
+	int digits = 0;
+	do
+	{
+		digits++;
+		score /= 10;
+	}
+	while(score > 0);
+	digits += 7;
+	char* text = new char(digits);
+	sprintf(text, "Score: %d", thePlayer.getScore());
+	for(int i = 0; i < digits; i++)
+	{
+		char character = text[i];
+		int x = WIDTH - digits + i;
+		window.setCharacterAt(x, 0, character);
 	}
 }
 
@@ -208,6 +230,7 @@ void game::drawGame()
 		}
 	}
 	thePlayer.render(&window);
+	drawScore();
 }
 
 void game::updateEntities()

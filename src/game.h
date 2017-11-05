@@ -44,6 +44,7 @@ class game
 		void drawTitle();
 		void drawFloor();
 		void drawGame();
+		void drawScore();
 		void updateEntities();
 		int score;
 		int x; 

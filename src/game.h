@@ -3,12 +3,13 @@
 
 #include "screen.h"
 #include "player.h"
+#include "wall.h"
 
 #define WIDTH 80
 #define HEIGHT 15
 #define FLOOR 11
 
-#define LITTLE_G -0.05
+#define LITTLE_G -.07
 
 #define FPS 60
 #define FRAMETIME 1000000 / FPS
@@ -40,6 +41,7 @@ class game
 		int x; 
 		int y;
 		player theplayer;
+		wall testWall;
 		gameState state;
 }
 ;

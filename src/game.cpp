@@ -16,6 +16,7 @@ window(WIDTH, HEIGHT)
 	{
 		walls[i] = NULL;
 	}
+	ticks = 0;
 }
 
 game::~game()
@@ -50,6 +51,7 @@ void game::reset()
 	{
 		walls[i] = NULL;
 	}
+	ticks = 0;
 }
 
 int game::init()
@@ -413,17 +415,29 @@ void game::updateEntities()
 			}
 		}
 	}
-	//Add new walls
-	if(ticks % 60 == 0)
+	int wallTicks = 60;
+	if(thePlayer->getScore() > 50)
 	{
-		for(int i = 0; i < MAX_WALLS; i++)
+		wallTicks = 50;
+	}
+	if(thePlayer->getScore() > 100)
+	{
+		wallTicks = 48;
+	}
+	//Add new walls
+	if((rand() % 10 + 1) < 7)
+	{
+		if(ticks % wallTicks == 0)
 		{
-			wall* w = walls[i];
-			if(w == NULL)
+			for(int i = 0; i < MAX_WALLS; i++)
 			{
-				int height = rand() % MAX_WALL_HEIGHT + 1;
-			  	walls[i] = new wall(height);
-				break;
+				wall* w = walls[i];
+				if(w == NULL)
+				{
+					int height = rand() % MAX_WALL_HEIGHT + 1;
+			  		walls[i] = new wall(height);
+					break;
+				}
 			}
 		}
 	}

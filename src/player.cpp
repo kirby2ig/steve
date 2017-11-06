@@ -35,7 +35,10 @@ void player::setScore(int amount)
 }
 void player::render(screen *window)
 {
-	window->setCharacterAt(x, y, 'O');
+	if(alive)
+		window->setCharacterAt(x, y, 'O');
+	else
+		window->setCharacterAt(x, y, 'X');
 }
 
 void player::jump()

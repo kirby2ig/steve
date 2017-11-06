@@ -6,9 +6,9 @@
 #include <stdio.h>
 
 game::game() :
-window(WIDTH, HEIGHT),
-thePlayer(3, FLOOR - 1)
+window(WIDTH, HEIGHT)
 {
+	thePlayer = new player(3, FLOOR - 1);
 	running = true;
 	state = MENU;
 	walls = new wall*[MAX_WALLS];
@@ -28,6 +28,28 @@ game::~game()
 		}
 	}
 	delete[] walls;
+	delete thePlayer;
+}
+
+void game::reset()
+{
+	delete thePlayer;
+	thePlayer = new player(3, FLOOR - 1);
+	for(int i = 0; i < MAX_WALLS; i++)
+	{
+		if(walls[i] != NULL)
+		{
+			delete walls[i];
+		}
+	}
+	delete[] walls;
+	running = true;
+	state = MENU;
+	walls = new wall*[MAX_WALLS];
+	for(int i = 0; i < MAX_WALLS; i ++)
+	{
+		walls[i] = NULL;
+	}
 }
 
 int game::init()
@@ -47,7 +69,7 @@ void game::run()
 
 void game::drawScore()
 {
-	int score = thePlayer.getScore();
+	int score = thePlayer->getScore();
 	int digits = 0;
 	do
 	{
@@ -57,7 +79,7 @@ void game::drawScore()
 	while(score > 0);
 	digits += 7;
 	char* text = new char(digits);
-	sprintf(text, "Score: %d", thePlayer.getScore());
+	sprintf(text, "Score: %d", thePlayer->getScore());
 	for(int i = 0; i < digits; i++)
 	{
 		char character = text[i];
@@ -230,13 +252,13 @@ void game::drawGame()
 			w->render(&window);
 		}
 	}
-	thePlayer.render(&window);
+	thePlayer->render(&window);
 	drawScore();
 }
 
 void game::updateEntities()
 {
-	thePlayer.update();
+	thePlayer->update();
 	//Move walls every 2 ticks
 	if(ticks % 2 == 0)
 	{
@@ -283,11 +305,11 @@ void game::updateEntities()
 		wall* w = walls[i];
 		if(w != NULL)
 		{
-			thePlayer.checkCollision(w);
+			thePlayer->checkCollision(w);
 		}
 	}
 	//Check death
-	if(!thePlayer.isAlive())
+	if(!thePlayer->isAlive())
 	{
 		state = DEATH;
 	}	
@@ -328,7 +350,7 @@ void game::handleInput()
 		if(character == ' ')
 		{
 
-			thePlayer.jump();
+			thePlayer->jump();
 		}
 	}
 
@@ -336,6 +358,12 @@ void game::handleInput()
 	{
 		if(character == ' ')
 			state = GAME;
+	}
+	
+	if(state == DEATH)
+	{
+		if(character == ' ')
+			reset();
 	}
 
 	if(character == 'q')

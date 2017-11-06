@@ -46,11 +46,12 @@ class game
 		void drawGame();
 		void drawScore();
 		void updateEntities();
+		void reset();
 		int score;
 		int x; 
 		int y;
 		long ticks;
-		player thePlayer;
+		player* thePlayer;
 		gameState state;
 		wall** walls;
 }

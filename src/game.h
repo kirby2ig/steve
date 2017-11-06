@@ -44,6 +44,7 @@ class game
 		void drawTitle();
 		void drawFloor();
 		void drawGame();
+		void drawGameOver();
 		void drawScore();
 		void updateEntities();
 		void reset();

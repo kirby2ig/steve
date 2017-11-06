@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <unistd.h>
-#include <math.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 game::game() :

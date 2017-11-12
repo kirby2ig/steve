@@ -17,6 +17,9 @@ window(WIDTH, HEIGHT)
 		walls[i] = NULL;
 	}
 	ticks = 0;
+	nextWall = 0;
+	moveMultiple = 5;
+	nextLevelScore = 20;
 }
 
 game::~game()
@@ -52,6 +55,9 @@ void game::reset()
 		walls[i] = NULL;
 	}
 	ticks = 0;
+	nextWall = 0;
+	moveMultiple = 5;
+	nextLevelScore = 10;
 }
 
 int game::init()
@@ -393,9 +399,10 @@ void game::drawGame()
 
 void game::updateEntities()
 {
-	thePlayer->update();
-	//Move walls every 2 ticks
-	if(ticks % 2 == 0)
+	thePlayer->update();	
+	
+	//Every moveMultiple ticks
+	if(ticks % moveMultiple == 0)
 	{
 		//Move walls
 		for(int i = 0; i < MAX_WALLS; i++)
@@ -406,47 +413,60 @@ void game::updateEntities()
 				w->move();
 			}
 		}
-		//Remove dead walls
-		for(int i = 0; i < MAX_WALLS; i++)
+	}
+
+	//Remove dead walls
+	for(int i = 0; i < MAX_WALLS; i++)
+	{
+		wall* w = walls[i];
+		if(w != NULL)
 		{
-			wall* w = walls[i];
-			if(w != NULL)
+			if(!w->stillExists())
 			{
-				if(!w->stillExists())
-				{
-					delete w;
-					walls[i] = NULL;
-				}
+				delete w;
+				walls[i] = NULL;
 			}
 		}
 	}
 	
-	int wallTicks = 60;
-	
-	if(thePlayer->getScore() > 50)
+	//Count the walls on screen
+	int wallNum = 0;
+	for(int i = 0; i < MAX_WALLS; i++)
 	{
-		wallTicks = 50;
+		if(walls[i] != NULL)
+		{
+			wallNum++;
+		}
 	}
-	if(thePlayer->getScore() > 100)
+
+	if(wallNum == 0 && thePlayer->getScore() >= nextLevelScore)
 	{
-		wallTicks = 48;
+		if(moveMultiple > 1)
+		{
+			moveMultiple--;
+			nextLevelScore = thePlayer->getScore() * 2;
+		}
 	}
-	//Add new walls
-	if((rand() % 10 + 1) < 7)
+
+	//Add a new wall
+	if(ticks >= nextWall)
 	{
-		if(ticks % wallTicks == 0)
+		nextWall = ticks + moveMultiple * (rand() % 25 + 26);
+		if(moveMultiple == 1 || (moveMultiple > 1 && thePlayer->getScore() + wallNum < nextLevelScore))
 		{
 			for(int i = 0; i < MAX_WALLS; i++)
 			{
-				wall* w = walls[i];
+				wall *w = walls[i];
 				if(w == NULL)
 				{
-			  		walls[i] = new wall();
+					walls[i] = new wall();
 					break;
 				}
 			}
 		}
 	}
+	
+
 	//Check collisions
 	for(int i = 0; i < MAX_WALLS; i++)
 	{

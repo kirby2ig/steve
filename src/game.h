@@ -48,7 +48,9 @@ class game
 		void drawScore();
 		void updateEntities();
 		void reset();
-		int score;
+		int nextWall;
+		int moveMultiple;
+		int nextLevelScore;
 		int x; 
 		int y;
 		long ticks;

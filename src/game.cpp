@@ -94,51 +94,51 @@ void game::drawScore()
 
 void game::drawGameOver()
 {
-    //G
-    window.setCharacterAt(11, 0, 'G');
-    window.setCharacterAt(12, 0, 'G');
-    window.setCharacterAt(13, 0, 'G');
-    window.setCharacterAt(14, 0, 'G');
-    window.setCharacterAt(15, 0, 'G');
-    window.setCharacterAt(11, 1, 'G');
-    window.setCharacterAt(11, 2, 'G');
-    window.setCharacterAt(14, 2, 'G');
-    window.setCharacterAt(15, 2, 'G');
-    window.setCharacterAt(11, 3, 'G');
-    window.setCharacterAt(15, 3, 'G');
-    window.setCharacterAt(11, 4, 'G');
-    window.setCharacterAt(12, 4, 'G');
-    window.setCharacterAt(13, 4, 'G');
-    window.setCharacterAt(14, 4, 'G');
-    window.setCharacterAt(15, 4, 'G');
-    //A
-    window.setCharacterAt(19, 0, 'A');
-    window.setCharacterAt(18, 1, 'A');
-    window.setCharacterAt(20, 1, 'A');
-    window.setCharacterAt(17, 2, 'A');
-    window.setCharacterAt(18, 2, 'A');
-    window.setCharacterAt(20, 2, 'A');
-    window.setCharacterAt(21, 2, 'A');
-    window.setCharacterAt(17, 3, 'A');
-    window.setCharacterAt(21, 3, 'A');
-    window.setCharacterAt(17, 4, 'A');
-    window.setCharacterAt(21, 4, 'A');
-    //M
-    window.setCharacterAt(23, 0, 'M');
-    window.setCharacterAt(27, 0, 'M');
-    window.setCharacterAt(23, 1, 'M');
-    window.setCharacterAt(24, 1, 'M');
-    window.setCharacterAt(26, 1, 'M');
-    window.setCharacterAt(27, 1, 'M');
-    window.setCharacterAt(23, 2, 'M');
-    window.setCharacterAt(25, 2, 'M');
-    window.setCharacterAt(27, 2, 'M');
-    window.setCharacterAt(23, 3, 'M');
-    window.setCharacterAt(27, 3, 'M');
-    window.setCharacterAt(23, 4, 'M');
-    window.setCharacterAt(27, 4, 'M');
-    //E
-    window.setCharacterAt(29, 0, 'E');
+	//G
+	window.setCharacterAt(11, 0, 'G');
+	window.setCharacterAt(12, 0, 'G');
+	window.setCharacterAt(13, 0, 'G');
+	window.setCharacterAt(14, 0, 'G');
+	window.setCharacterAt(15, 0, 'G');
+	window.setCharacterAt(11, 1, 'G');
+	window.setCharacterAt(11, 2, 'G');
+	window.setCharacterAt(14, 2, 'G');
+	window.setCharacterAt(15, 2, 'G');
+	window.setCharacterAt(11, 3, 'G');
+	window.setCharacterAt(15, 3, 'G');
+ 	window.setCharacterAt(11, 4, 'G');
+	window.setCharacterAt(12, 4, 'G');
+ 	window.setCharacterAt(13, 4, 'G');
+	window.setCharacterAt(14, 4, 'G');
+	window.setCharacterAt(15, 4, 'G');
+	//A
+	window.setCharacterAt(19, 0, 'A');
+	window.setCharacterAt(18, 1, 'A');
+	window.setCharacterAt(20, 1, 'A');
+	window.setCharacterAt(17, 2, 'A');
+	window.setCharacterAt(18, 2, 'A');
+	window.setCharacterAt(20, 2, 'A');
+	window.setCharacterAt(21, 2, 'A');
+	window.setCharacterAt(17, 3, 'A');
+	window.setCharacterAt(21, 3, 'A');
+	window.setCharacterAt(17, 4, 'A');
+	window.setCharacterAt(21, 4, 'A');
+	//M
+	window.setCharacterAt(23, 0, 'M');
+	window.setCharacterAt(27, 0, 'M');
+	window.setCharacterAt(23, 1, 'M');
+	window.setCharacterAt(24, 1, 'M');
+	window.setCharacterAt(26, 1, 'M');
+	window.setCharacterAt(27, 1, 'M');
+	window.setCharacterAt(23, 2, 'M');
+	window.setCharacterAt(25, 2, 'M');
+	window.setCharacterAt(27, 2, 'M');
+	window.setCharacterAt(23, 3, 'M');
+	window.setCharacterAt(27, 3, 'M');
+	window.setCharacterAt(23, 4, 'M');
+	window.setCharacterAt(27, 4, 'M');
+	//E
+	window.setCharacterAt(29, 0, 'E');
 	window.setCharacterAt(30, 0, 'E');
 	window.setCharacterAt(31, 0, 'E');
 	window.setCharacterAt(32, 0, 'E');

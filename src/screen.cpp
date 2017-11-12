@@ -80,6 +80,22 @@ void screen::draw()
 	refresh();
 }
 
+void screen::printText(char* text, int length, int x, int y)
+{
+	int printX = x;
+	if (length < 0)
+		length = strlen(text);
+	for(int dx = x; dx < x + length; dx++)
+	{
+		setCharacterAt(printX++, y, text[dx - x]);  //this is where we inc printX
+		if (text[dx - x] == '\n')
+		{
+			y++;
+			printX = x;
+		}
+	}
+}
+
 void screen::clear(char space)
 {
 	for(int y = 0; y < height; y++)
@@ -90,4 +106,3 @@ void screen::clear(char space)
 		}
 	}
 }
-

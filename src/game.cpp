@@ -82,12 +82,13 @@ void game::drawScore()
 	digits += 7;
 	char* text = new char(digits);
 	sprintf(text, "Score: %d", thePlayer->getScore());
-	for(int i = 0; i < digits; i++)
+	window.printText(text, -1, WIDTH - digits, 0);
+	/*for(int i = 0; i < digits; i++)
 	{
 		char character = text[i];
 		int x = WIDTH - digits + i;
 		window.setCharacterAt(x, 0, character);
-	}
+	}*/
 	delete[] text;
 }
 
@@ -297,7 +298,8 @@ void game::drawTitle()
 	window.setCharacterAt(55, 4, 'E');
 	window.setCharacterAt(56, 4, 'E');
 	//The jumping O
-	//The
+	window.printText((char*) "The jumping O", 13, 33, 6);  //this works! -Stephen
+	/*//The
 	window.setCharacterAt(33, 6, 'T');
 	window.setCharacterAt(34, 6, 'h');
 	window.setCharacterAt(35, 6, 'e');
@@ -310,9 +312,10 @@ void game::drawTitle()
 	window.setCharacterAt(42, 6, 'n');
 	window.setCharacterAt(43, 6, 'g');
 	//O
-	window.setCharacterAt(45, 6, 'O');
+	window.setCharacterAt(45, 6, 'O');*/
 	//Press spacebar to start
-	//Press
+	window.printText((char*) "Press spacebar to start\n    Press Q to quit", /*23*/-1, 27, 77);  //this works! Uses newlines, too
+	/*//Press
 	window.setCharacterAt(27, 77, 'P');
 	window.setCharacterAt(28, 77, 'r');
 	window.setCharacterAt(29, 77, 'e');
@@ -335,10 +338,11 @@ void game::drawTitle()
 	window.setCharacterAt(46, 77, 't');
 	window.setCharacterAt(47, 77, 'a');
 	window.setCharacterAt(48, 77, 'r');
-	window.setCharacterAt(49, 77, 't');
+	window.setCharacterAt(49, 77, 't');*/
 	//Press q to quit
-	//Press
-	window.setCharacterAt(31, 78, 'P');
+	//window.printText((char*) "Press Q to quit", 15, 31, 78);
+	/*//Press
+	window.setCharacterAt(31, 78, 'P'); //old method
 	window.setCharacterAt(32, 78, 'r');
 	window.setCharacterAt(33, 78, 'e');
 	window.setCharacterAt(34, 78, 's');
@@ -349,10 +353,11 @@ void game::drawTitle()
 	window.setCharacterAt(39, 78, 't');
 	window.setCharacterAt(40, 78, 'o');
 	//quit
-	window.setCharacterAt(42, 78, 'q');
+	
+	window.setCharacterAt(42, 78, 'q');  
 	window.setCharacterAt(43, 78, 'u');
 	window.setCharacterAt(44, 78, 'i');
-	window.setCharacterAt(45, 78, 't');
+	window.setCharacterAt(45, 78, 't');*/
 }
 
 void game::drawFloor()
@@ -415,7 +420,9 @@ void game::updateEntities()
 			}
 		}
 	}
+	
 	int wallTicks = 60;
+	
 	if(thePlayer->getScore() > 50)
 	{
 		wallTicks = 50;

@@ -17,3 +17,5 @@ screen.o: screen.cpp screen.h
 	$(CC) $(CFLAGS) -c screen.cpp 
 clean:
 	rm *.o steve
+install: steve
+	cp steve /usr/bin/

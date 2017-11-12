@@ -441,8 +441,7 @@ void game::updateEntities()
 				wall* w = walls[i];
 				if(w == NULL)
 				{
-					int height = rand() % MAX_WALL_HEIGHT + 1;
-			  		walls[i] = new wall(height);
+			  		walls[i] = new wall();
 					break;
 				}
 			}

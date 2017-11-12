@@ -9,7 +9,7 @@ class wall :
 public entity
 {
 	public:
-		wall(int height);
+		wall();
 		~wall();
 		void render(screen *window);
 		void update();

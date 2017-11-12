@@ -1,12 +1,14 @@
 #include "wall.h"
 #include "game.h"
 
-wall::wall(int height):
+#include <stdlib.h>
+
+wall::wall():
 entity(WALL_SPAWN, FLOOR - 1)
 {
-	this->height = height;
 	exists = true;
 	scored = false;
+	height = rand() % MAX_WALL_HEIGHT + 1;
 }
 
 wall::~wall()

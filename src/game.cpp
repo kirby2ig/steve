@@ -18,8 +18,8 @@ window(WIDTH, HEIGHT)
 	}
 	ticks = 0;
 	nextWall = 0;
-	moveMultiple = 5;
-	nextLevelScore = 20;
+	moveMultiple = 3;
+	nextLevelScore = 25;
 }
 
 game::~game()
@@ -56,8 +56,8 @@ void game::reset()
 	}
 	ticks = 0;
 	nextWall = 0;
-	moveMultiple = 5;
-	nextLevelScore = 10;
+	moveMultiple = 3;
+	nextLevelScore = 25;
 }
 
 int game::init()

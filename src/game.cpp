@@ -86,7 +86,7 @@ void game::drawScore()
 	}
 	while(score > 0);
 	digits += 7;
-	char* text = new char(digits);
+	char* text = new char[digits];
 	sprintf(text, "Score: %d", thePlayer->getScore());
 	window.printText(text, -1, WIDTH - digits, 0);
 	/*for(int i = 0; i < digits; i++)

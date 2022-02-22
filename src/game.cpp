@@ -1,4 +1,5 @@
 #include "game.h"
+#include "powerstats.h"
 
 #include <iostream>
 #include <unistd.h>
@@ -71,6 +72,7 @@ void game::run()
 	{
 		update();
 		render();
+		powerstats_sample();
 		usleep(FRAMETIME);
 	}
 }

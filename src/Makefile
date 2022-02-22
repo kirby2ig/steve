@@ -1,6 +1,6 @@
 CC=g++
-CFLAGS=
-LINK=-lncurses -lm
+CFLAGS=-I/Users/benmarshall/Documents/HPC/CLAMR/powerstats
+LINK=-lncurses -lm -L/Users/benmarshall/Documents/HPC/CLAMR/powerstats -lpowerstats
 steve: main.o game.o player.o entity.o wall.o screen.o
 	$(CC) $(CFLAGS) -o steve main.o game.o player.o wall.o entity.o screen.o $(LINK)
 main.o: main.cpp game.h screen.h
